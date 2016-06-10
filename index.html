@@ -92,7 +92,7 @@
 
                         <ul>
                             <li>Não é preciso declarar variáveis <span class="fragment green">🡆 Gostei!</span></li>
-                            <li>Não é preciso colocar ";" no final <span class="fragment green">🡆 Adorei!</span></li>
+                            <li>Não é preciso colocar ";" no final <span class="fragment green">🡆 Show!</span></li>
                             <li>Não é preciso utilizar chaves 🡆 O escopo é
                                 controlado por espaço <span class="fragment green">🡆 Depois digo se gostei</span></li>
                         </ul>
@@ -858,6 +858,11 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
                         <h2>Criando Scripts</h2>
 
                         <ul>
+                            <li>Python é uma linguagem interpretada
+                                <ul>
+                                    <li>Não precisamos compilar nosso programa</li>
+                                    <li>Mas queremos <span class="green">rodar</span> um programa (um script)</li>
+                                </ul></li>
                             <li>Para criar um script basta colocar o código em
                                 um arquivo com extensão <code>.py</code></li>
                             <li>Rode o interpretador python passando o
@@ -899,14 +904,30 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
                 <section>
                     <h2>IPython</h2>
                     <ul>
-                        <li>Obtendo Ajuda com "?"</li>
-                        <li>Completa um comando com TAB</li>
-                        <li>Edição em múltiplas linhas</li>
-                        <li>Magic keywords
+                        <li><a href="http://ipython.org/ipython-doc/stable/interactive/tutorial.html">Terminal interativo</a> para a linguagem python que oferece:
                             <ul>
-                                <li>%run</li>
-                                <li>%paste</li>
-                                <li>%timeit</li>
+                                <li><a href="http://ipython.readthedocs.io/en/stable/interactive/tutorial.html#tab-completion">Completar um comando</a> (após digitar parte dele) com <tt class="green">TAB</tt></li>
+                                <!-- <li>Sintaxe adicional para o shell</li> -->
+                                <li><a href="http://ipython.readthedocs.io/en/stable/interactive/tutorial.html#history">Histórico de comandos</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="http://ipython.readthedocs.io/en/stable/interactive/tutorial.html#exploring-your-objects">Obtendo Ajuda com "?"</a> <span style="font-size: 50%; float:right;">(se necessário aperte "q" para sair do help)</span>
+                            <div class="example">
+                                <div class="example-title">darlan@darlan-G75VX</div>
+                                <div class="example-body terminal">
+                                    <pre><code class="python" data-noescape><span class="green">In [1]:</span> abs?
+<span class="red">Docstring</span>: Return the absolute value of the argument.
+<span class="red">Type:</span>      builtin_function_or_method</code></pre></div></div>
+                        </li>
+                        <li><a href="http://ipython.readthedocs.io/en/stable/interactive/tutorial.html#magic-functions">Funções mágicas</a> 🡆 <span class="green">Muito úteis</span>
+                            <ul>
+                                <li><tt class="green">%whos</tt>: Veja variáveis e funções atuais</li>
+                                <li><tt class="green">%run</tt>: Executa um arquivo como um script</li>
+                                <li><tt class="green">%paste</tt>: Cola e executa um bloco de código</li>
+                                <li><tt class="green">%timeit</tt>: Executa uma expressão e mostra tempo decorrido</li>
+                                <!-- <li><tt class="green">%macro</tt>: Define um macro para futura execução</li> -->
+                                <li><tt class="green">%quickref</tt>: Cartão de referência do IPython</li>
+                                <!-- <li class="fragment"><tt class="green">%autocall</tt>: Dispensa os parêntesis em uma chamada de função</li> -->
                             </ul>
                         </li>
                     </ul>
@@ -1111,3 +1132,8 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
         </script>
 	</body>
 </html>
+<!-- 
+     Local Variables:
+     ispell-local-dictionary: "brasileiro"
+     End:
+     End: -->
