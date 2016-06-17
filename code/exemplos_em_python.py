@@ -12,3 +12,14 @@ minhas_compras = {"banana prata": 1.2,
 conta = sum([precos[fruta] * minhas_compras[fruta] for fruta in minhas_compras])
 print("Eu precisei pagar o total de R$ {0:.2f} em frutas".format(conta))
 # end-sample
+
+
+# sample(palavras_em_um_texto)
+texto = '''"Aonde fica a saída?", Perguntou Alice ao gato que ria.
+"Depende", respondeu o gato.
+"De quê?", replicou Alice;
+"Depende de para onde você quer ir..."'''
+palavras = texto.split()
+print("O texto tem {0} palavras, sendo {1} delas diferentes.".format(
+    len(palavras), len(set(palavras))))
+# end-sample
