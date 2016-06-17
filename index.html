@@ -18,15 +18,6 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-		 var link = document.createElement( 'link' );
-		 link.rel = 'stylesheet';
-		 link.type = 'text/css';
-		 link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-		 document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -681,25 +672,29 @@ False
                                     <div class="example-title">darlan@darlan-G75VX</div>
                                     <div class="example-body terminal">
                                         <pre><code class="python" data-noescape>>>> def fib(n):
-<span class="fragment" data-fragment-index="1">... """Imprime a série de Fibonacci até n."""</span>
-... a, b = 0, 1
-... while a < n:
-...     print(a, end=" ")
-...     a, b = b, a+b
-... print()
+<span class="fragment" data-fragment-index="1">...     """Imprime a série de Fibonacci até n. Essa função não retorna nada."""</span>
+...     a, b = 0, 1
+...     while a < n:
+...         print(a, end=" ")
+...         a, b = b, a+b
+...     print()
 >>> fib(1000)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
-<span class="fragment" data-fragment-index="2">>>> fib
+
+<span class="fragment" data-fragment-index="3">>>> fib
 &ltfunction __main__.fib&gt
 >>> f = fib
 >>> f
 &ltfunction __main__.fib&gt
->>> f(1000)
+>>> f(1000)  # Chama a função passando 1000 para o parâmetro n
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
 </span></code></pre></div></div>
                             </li>
-                            <li class="fragment" data-fragment-index="1">A primeira delcaração na função pode ser uma string, que será usada como documentação (<span class="green">docstring</span>)</li>
-                            <li class="fragment" data-fragment-index="2">Definir uma função introduz a mesma na tabela de símbolos atual</li>
+                            <li class="fragment" data-fragment-index="1">A primeira declaração na função pode ser uma string, que será usada como documentação (<span class="green">docstring</span>)
+                                <ul class="fragment" data-fragment-index="2">
+                                    <li> Pode ser vista com <code class="python">fib?</code> no IPython ou <code class="python">help(fib)</code></li>
+                                </ul></li>
+                            <li class="fragment" data-fragment-index="3">Definir uma função introduz a mesma na tabela de símbolos atual</li>
                             
                             <!-- <li>Os argumentos das funções podem ter valores padrão</li>
                                  <li>Argumentos adicionais com valores padrão podem ser nomeados quando chamados (argumento com palavra chave</li> -->
@@ -733,7 +728,7 @@ False
                         <h2>Parâmetros com valor padrão</h2>
 
                         <ul>
-                            <li>Os parâmetros de uma função podem ter um valor padrão</li>
+                            <li>Os parâmetros de uma função podem ter um <span class="green">valor padrão</span></li>
                             <li>Isso permite chamar a função com menos parâmetros do que foram definidos</li>
 
                             <!-- <li>Considere a função que retorna a posição de um
@@ -760,17 +755,19 @@ False
                     <section>
                         <h2>Funções com quantidade variável de argumentos</h2>
                         <ul>
-                            <li>Funções podem ser para aceitar uma
-                            quantidade variável de argumentos por posição,
-                            por palavra chave ou ambos</li>
+                            <li>Funções podem aceitar uma quantidade
+                            variável de argumentos tanto via posição quanto
+                            via palavra chave</li>
                             <li class="fragment">Para isso use o prefixo 
-                                <code>*</code> ou <code>**</code> antes
+                                <code>*</code> e/ou <code>**</code> antes
                             do argumento final</li>
                             <li class="fragment">Se houverem multiplos
                             parâmetros via posição e nome use os dois
                             prefixos
                                 <pre><code data-trim>
-def my_func(parametros_orbigatorios, *args, **kwargs):
+def my_func(a, b, *args, **kwargs):  # 'a' é um 'b' são parâmetros obrigatórios
+    print(a)
+    print(b)
     # tupla de todos os parâmetros via posição 
     print(args)
 
@@ -778,6 +775,17 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
     print(kwargs)
                                 </code></pre></li>
                         </ul>
+
+                        <div class="example fragment">
+                            <div class="example-title">darlan@darlan-G75VX</div>
+                            <div class="example-body terminal">
+                                <pre><code class="python" data-noescape>>>> my_func(1, 2, 3, "e", "já",  modelo="Fusca", cor="Amarelo")
+1
+2
+(3, 'e', 'já')
+{'cor': 'Amarelo', 'modelo': 'Fusca'}
+</code></pre></div></div>
+
                     </section>
                     
                     <section>
@@ -787,8 +795,8 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
                             <li>As vezes precisamos efetuar algum cálculo
                             simples, que possivelmente utilizaremos uma
                             única vez logo em seguida</li>
-                            <li class="fragment">Declarar uma função de maneira tradicional
-                            poderia ser <strong>trabalho demais só para isso</strong></li>
+                            <!-- <li class="fragment">Declarar uma função de maneira tradicional
+                                 poderia ser <strong>trabalho demais só para isso</strong></li> -->
                             <li class="fragment">Nesses casos podemos criar uma "<strong>função anônima</strong>"</li>
                             <li class="fragment">Notação: <code>lambda variáveis: expressão</code>
                             <div class="example">
@@ -860,13 +868,28 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
                         <ul>
                             <li>Python é uma linguagem interpretada
                                 <ul>
-                                    <li>Não precisamos compilar nosso programa</li>
-                                    <li>Mas queremos <span class="green">rodar</span> um programa (um script)</li>
+                                    <li class="fragment">Não precisamos compilar nosso programa</li>
+                                    <li class="fragment">Podemos executar os comandos
+                                    diretamente no terminal
+                                        <ul class="fragment">
+                                            <li>Mas isso será perdido se fecharmos o terminal</li>
+                                        </ul></li>
+                                    
+                                    <li class="fragment">Se salvarmos o código em
+                                    um arquivo (script) poderemos <span class="green">rodar
+                                        o programa</span> sempre que quisermos</li>
                                 </ul></li>
-                            <li>Para criar um script basta colocar o código em
+                            <li class="fragment">Para criar um script basta colocar o código em
                                 um arquivo com extensão <code>.py</code></li>
-                            <li>Rode o interpretador python passando o
-                            script como parâmetro <pre><code class="bash">python meu_script.py</code></pre></li>
+                            <li class="fragment">Rode o interpretador python passando o
+                            script como parâmetro 
+                                <!-- <pre><code class="bash">python meu_script.py</code></pre> -->
+                                <div class="example fragment">
+                                    <div class="example-title">darlan@darlan-G75VX</div>
+                                    <div class="example-body terminal">
+                                        <pre><code class="bash">~$ python meu_script.py</code></pre></div></div>
+                            </li>
+                            <li class="fragment">Nota: É necessário ter o Python instalado no computador</li>
                         </ul>
                     </section>
 
@@ -931,6 +954,17 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
                             </ul>
                         </li>
                     </ul>
+                </section>
+
+
+                <section>
+                    <h2>Exemplos de Programas</h2>
+
+                    <ul>
+                        <li>Calcula quando precisei pagar de frutas no supermercado</li>
+                    </ul>
+                    <pre><code class="sample" sample="code/exemplos_em_python.py#frutas"></code></pre>
+                    
                 </section>
 
 
@@ -1130,6 +1164,16 @@ def my_func(parametros_orbigatorios, *args, **kwargs):
           *     }
           * });*/
         </script>
+
+        <!-- Printing and PDF exports -->
+		<script>
+		 var link = document.createElement( 'link' );
+		 link.rel = 'stylesheet';
+		 link.type = 'text/css';
+		 link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		 document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
 	</body>
 </html>
 <!-- 
