@@ -91,7 +91,15 @@
 
                     <section>
                         <h2>O que esse programa faz?</h2>
-                        <pre><code class='sample' sample='code/fizzbuzz.py#mycode'></code></pre>
+                        <pre><code class="python">for i in range(1, 101):  # Não há chaves {}
+    if i % 15 == 0:  # Não é necessário parêntesis para a condição
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:     # elif combina 'else' com 'if'
+        print("Buzz")
+    else:
+        print(i)</code></pre>
                         <ul>
                             <li class="fragment" data-fragment-index="1">A função <code>range</code> cria uma "lista" de elementos
                                 <ul class="fragment" data-fragment-index="1">
@@ -117,7 +125,13 @@
                     <section>
                         <h2>Tipos Simples</h2>
                         <!-- <div style="display:flex; align-items: center;"> -->
-                        <pre><code class="sample" sample='/code/variaveis_em_python.py#escalares' data-trim></code></pre>
+                        <pre><code class="python">idade = 4            # Inteiro (int)
+nome = "Kadu"        # String (str)
+peso = 10.4          # Float (float)
+vacinado = True      # Booleano (bool)
+dono_anterior = None # Representa um tipo vazio (None)
+peso_int = int(peso) # Inteiro convertido a partir de um float
+c = 1-3j             # Número complexo</code></pre>
 
                         <ul>
                             <li>Utilize "<code>type</code>" para determinar o tipo de uma variável
@@ -136,7 +150,12 @@ str</code></pre></div></div>
                     
                     <section>
                         <h2>Tipos Compostos (contêineres)</h2>
-                        <pre><code class="sample" sample="/code/variaveis_em_python.py#containers"></code></pre>
+                        <pre><code class="python">uma_lista = [2, 3, 5.5, 7, 11, "lala"] # Lista (list, [])
+uma_tupla = (2, "lala", 4)             # Tupla (tuple, ())
+um_dict = {'nome': "Silvio Santos",    # Dicionário (dict)
+          'idade': 86,
+          "profissões": ["apresentador", "empresário"]}
+um_conjunto = {1, 4, 8, 10, "lala"}    # Conjunto (set)</code></pre>
                         <ul>    
                             <li>Python possui vários estruturas de dados flexíveis como listas, tuplas, dicionários e conjuntos</li>
                             <li>Podemos armazenar valores de diferentes tipos nesses contêineres</li>
@@ -290,7 +309,13 @@ False
                                 </ul></li>
                         </ul>
                         
-                        <pre class="fragment"><code class="sample" sample="code/estruturas_condicionais_em_python.py#condicional"></code></pre>
+                        <pre class="fragment python"><code>if x == 42:
+    # Código executado de x for igual a 42
+    print("x vale 42")
+elif x > 0:
+    print("x não vale 42, mas pelo menos é maior que 0")
+else:
+    print("Nenhuma das condições anteriores foi verdadeira")</code></pre>
 
                         <p class="fragment">Nota: Não existe "switch case" em Python, mas temos uma alternativa</p>
                         
@@ -306,9 +331,14 @@ False
                                 <span class="green">itens de uma sequência</span>
                                 (uma lista, uma string, etc) na ordem em
                                 que eles aparecem
-                                <pre><code class="sample" sample="code/estruturas_de_repeticao_em_python.py#for"></code></pre></li>
+                                <pre><code class="python">palavras = ['gato', 'janela', 'paralelepípedo']
+for palavra in palavras:
+    print (palavra.upper())</code></pre></li>
                             <li class="fragment">Para iterar em uma sequência de números use <code>range</code>
-                                <pre><code class="sample" sample="code/estruturas_de_repeticao_em_python.py#range"></code></pre>
+                                <pre><code class="python">range(5, 10)          # 5, 6, 7, 8, 9
+range(0, 10, 3)       # 0, 3, 6, 9
+range(-10, -100, -30) # -10, -40, -70
+range(-10, -101, -30) # -10, -40, -70 -100</code></pre>
                                 <div class="example" style="width: 100%; float:right;">
                                     <div class="example-title">darlan@darlan-G75VX</div>
                                     <div class="example-body terminal">
@@ -326,9 +356,14 @@ False
 
                         <ul>
                             <li>Também temos <code>while</code> em Python, que funciona de forma semelhante ao C/C++
-                                <pre><code class="sample" sample="code/estruturas_de_repeticao_em_python.py#while"></code></pre></li>
+                                <pre><code class="python">N = 6
+f = 1
+while N > 1:
+    f = f * N
+    N -= 1  # Não existe ++ ou -- em Python</code></pre></li>
                             <li class="fragment">Em um bloco de código (corpo de um <code>if</code>, <code>for</code>, <code>while</code>, etc) podemos usar <code>pass</code> para não "fazer nada"
-                                <pre><code class="sample" sample="code/estruturas_de_repeticao_em_python.py#while-infinito"></code></pre></li></li>
+                                <pre><code class=python">while True:
+    pass</code></pre></li></li>
                         </ul>
                         
                     </section>
@@ -600,7 +635,12 @@ True</span>
                             <li>Podemos iterar sobre um dicionário com um <code>for</code></li>
                             <li>use <code>d.items()</code> para retornar uma "lista de pares" de chave e valor que pode ser usada em um <code>for</code>, por exemplo</li>
                         </ul>
-                        <pre><code class="sample" sample="code/dicionarios.py#for"></code></pre>
+                        <pre><code class="python">d = {"pi": 3.141592,
+     "e": 2.718282,
+     "número de ouro": 1.6180}
+
+for chave, valor in d.items():
+    pass  # Faça alguma coisa com a chave e o valor</code></pre>
                         <p>Exemplo
                         <div class="example">
                             <div class="example-title">darlan@darlan-G75VX</div>
@@ -735,7 +775,9 @@ False
                                  móvel dada uma posição inicial, velocidade e
                                  aceleração \[s = s_0+v_0 t + \frac{1}{2}a t^2\]</li> -->
                             <li class="fragment" data-fragment-index="1">Exemplo: <span class="green" style="margin-left: 3%;">\(s = s_0+v_0 t + \frac{1}{2}a t^2\)</span> 
-                                <pre><code class="sample" sample="code/funcoes.py#posicao_final"></code></pre></li>
+                                <pre><code class="python">def calc_s(t, s0=0, v0=1, a=0.5):
+    """Calcula posição final dados s0, v0, a e t."""
+    return s0 + v0*t + 0.5 * a * t**2</code></pre></li>
                             <li class="fragment" data-fragment-index="4">Também é possível especificar um parâmetro pelo nome</li>
                         </ul>
                         
@@ -899,7 +941,11 @@ def my_func(a, b, *args, **kwargs):  # 'a' é um 'b' são parâmetros obrigatór
                         <ul>
                             <li>Outra alternativa é criar um <span class="green">módulo</span> e <span class="green">importá-lo</span></li>
                             <li>Supuponha que o arquivo <code>my_funcs.py</code> contém
-                                <pre><code class="sample" sample="code/modulo_de_funcoes.py#modulo"></code></pre>É possíve importar as definições do módulo <code>my_funcs</code></li>
+                                <pre><code class="python">def dobra(x):
+    return 2*x
+
+def triplica(x):
+    return 3*x</code></pre>É possíve importar as definições do módulo <code>my_funcs</code></li>
                         </ul>
 
                         <div class="example">
@@ -963,7 +1009,18 @@ def my_func(a, b, *args, **kwargs):  # 'a' é um 'b' são parâmetros obrigatór
                     <ul>
                         <li>Calcula quando precisei pagar de frutas no supermercado</li>
                     </ul>
-                    <pre><code class="sample" sample="code/exemplos_em_python.py#frutas"></code></pre>
+                    <pre><code class="python">precos = {"banana prata": 3.50,
+          "coco verde": 2.0,
+          "maçã nacional": 4.50,
+          "manga tommy": 5.0,
+          "uva red glob": 5.0}
+minhas_compras = {"banana prata": 1.2,
+                  "coco verde": 6,
+                  "uva red glob": 0.6}
+
+# Usa um list comprehension para gerar uma lista e soma os seus valores
+conta = sum([precos[fruta] * minhas_compras[fruta] for fruta in minhas_compras])
+print("Eu precisei pagar o total de R$ {0:.2f} em frutas".format(conta))</code></pre>
                     
                 </section>
 
@@ -974,7 +1031,15 @@ def my_func(a, b, *args, **kwargs):  # 'a' é um 'b' são parâmetros obrigatór
                     <ul>
                         <li>Conta o número de palavras em um texto</li>
                     </ul>
-                    <pre><code class="sample" sample="code/exemplos_em_python.py#palavras_em_um_texto"></code></pre>
+                    <pre><code class="python">texto = '''"Aonde fica a saída?", Perguntou Alice ao gato que ria.
+"Depende", respondeu o gato.
+"De quê?", replicou Alice;
+"Depende de para onde você quer ir..."'''
+palavras = texto.split()  # Separa o texto em uma lista de palavras
+print("O texto tem {0} palavras, sendo {1} delas diferentes.".format(
+    len(palavras),      # Número de palavras
+    len(set(palavras))  # Número de palavras únicas
+))</code></pre>
                     
                 </section>
 
@@ -1160,8 +1225,7 @@ def my_func(a, b, *args, **kwargs):  # 'a' é um 'b' são parâmetros obrigatór
                  // Zoom in and out with Alt+click
                  { src: 'plugin/zoom-js/zoom.js', async: true },
                  // MathJax
-                 { src: 'plugin/math/math.js', async: true },
-                 { src: 'plugin/sampler.js' }
+                 { src: 'plugin/math/math.js', async: true }
 			 ]
 		 });
 		</script>

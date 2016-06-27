@@ -24,4 +24,4 @@ um_dict = {'nome': "Silvio Santos",    # Dicionário (dict)
           'idade': 86,
           "profissões": ["apresentador", "empresário"]}
 um_conjunto = {1, 4, 8, 10, "lala"}    # Conjunto (set)
-                                       # end-sample
+# end-sample
